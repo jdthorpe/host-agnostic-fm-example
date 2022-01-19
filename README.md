@@ -1,4 +1,4 @@
-# Location Agnostist Federated Web Modules
+# Location Agnostic Federated Web Modules
 
 TL;DR: this repo provides an example of how to serve modules so they don't care
 where they are hosted, as in:
@@ -25,7 +25,7 @@ _hint: search for the word "Gotcha" in this repo for gotchas that, you know, got
 
 ## Background
 
-It really bothers me that in every turorial I can find, federated modules (hosts
+It really bothers me that in every tutorial I can find, federated modules (hosts
 and remotes) need to know where they and their dependencies are hosted both in
 development and production. Specifically these bits in the webpack config that
 require the path to the server at runtime, which prevent the use things like
@@ -65,12 +65,12 @@ I have this hammer in my tool belt (nginx) and I saw a nail (hosting federated m
 
 ## Strategy
 
--   Start the react (webpack) dev server listinn on served at port 3300.
+-   Start the react (webpack) dev server listing on served at port 3300.
 -   Build the federated remote modules (e.g. `module_a/`) so it's assets are in
     the dist directory (e.g. `module_a/dist`).
 -   Use nginx (listening on port 3100) and:
     -   proxy the web application.
-    -   proxy the modules by serving request like `/container/module_a/remotEntry.js`
+    -   proxy the modules by serving request like `/container/module_a/remoteEntry.js`
         from `module_a/dist/remoteEntry.js`
 
 ## Outline of this example
