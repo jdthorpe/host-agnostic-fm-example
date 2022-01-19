@@ -28,9 +28,9 @@ _hint: search for the word "Gotcha" in this repo for gotchas that, you know, got
 It really bothers me that in every tutorial I can find, federated modules (hosts
 and remotes) need to know where they and their dependencies are hosted both in
 development and production. Specifically these bits in the webpack config that
-require the path to the server at runtime, which prevent the use things like
-testing / staging sites hosted on the web (for true E2E testing including the
-infrastructure config):
+require the scheme/hostname/port of the server be specified at build time,
+which prevent the use of things like testing / staging sites hosted on the web (for
+true E2E testing including the infrastructure config):
 
 ```js
 // webpack.config.js
