@@ -101,7 +101,7 @@ cd host-agnostic-fm-example/module_a
 npm run build
 ```
 
-Terminal 1: Start the NGINX proxy (running in docker -- yes, you'll need docker installed for this...)
+Terminal 3: Start the NGINX proxy (running in docker -- yes, you'll need docker installed for this...)
 
 ```sh
 cd host-agnostic-fm-example
