@@ -104,7 +104,7 @@ npm run build
 Terminal 1: Start the NGINX proxy (running in docker -- yes, you'll need docker installed for this...)
 
 ```sh
-cd host-agnostic-fm-example/host
+cd host-agnostic-fm-example
 docker run \
     --rm -it \
     -p 3100:80 \
