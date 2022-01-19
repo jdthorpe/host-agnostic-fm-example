@@ -94,6 +94,8 @@ yarn
 yarn start
 ```
 
+(close the window that automatically opens on port 3300 by the react dev server)
+
 Terminal 2: build the federated module
 
 ```sh
@@ -112,6 +114,8 @@ docker run \
     -v $PWD:/www/containers \
     nginx
 ```
+
+Finally, open the app on `localhost:3100` (where the NGINX proxy is listening)
 
 ## Limitations
 
