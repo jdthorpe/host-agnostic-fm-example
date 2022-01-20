@@ -117,6 +117,48 @@ docker run \
 
 Finally, open the app on `localhost:3100` (where the NGINX proxy is listening)
 
+# Serve the "prod" (static) app
+
+Step 1: build everything
+
+```sh
+cd host-agnostic-fm-example
+pushd host
+yarn build
+popd
+pushd module_a
+yarn build
+popd
+```
+
+Step 2: Serve the static app
+
+```sh
+cd host-agnostic-fm-example
+docker run \
+    --rm -it \
+    -p 3100:80 \
+    -v $PWD/prod-nginx.conf:/etc/nginx/nginx.conf \
+    -v $PWD:/www/containers \
+    -v $PWD/host/build:/www/data \
+    nginx
+```
+
+The app is now running on port 3100
+
+Explanation of the above in brief (this isn't a valid bash script)
+
+```sh
+docker run \ # docker should run something
+    --rm \ # and clean up after it quits
+    -it \ # and stream outputs to the console and listen for control-C to quit
+    -p 3100:80 \ # and expose the app on localhost:3100
+    -v $PWD/prod-nginx.conf:/etc/nginx/nginx.conf \ # and use the "prod" config
+    -v $PWD:/www/containers \ # and map this repo to /www/containers
+    -v $PWD/host/build:/www/data \ # and map the static host app to /www/data
+    nginx # and use the standard NGINX docker image
+```
+
 ## Limitations
 
 -   The host app still needs to know that it is the host. E.G. there must be
